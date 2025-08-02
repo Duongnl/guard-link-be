@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './schemas/user.schema';
@@ -37,4 +37,10 @@ export class UsersService {
   remove(id: number) {
     return `This action removes a #${id} user`;
   }
+
+
+  async findByUsername(username:string) {
+    return await this.userModel.findOne({username});
+  }
+  
 }
