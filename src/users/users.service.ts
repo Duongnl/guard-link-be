@@ -17,8 +17,10 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto) {
     const {name, username, password} = createUserDto;
+
+    const user = await this.userModel.findOne({username:username})
+    if (user) throw new BadRequestException("username exist");
     
-  
     return await this.userModel.create({name, username, password});
   }
 
@@ -43,4 +45,8 @@ export class UsersService {
     return await this.userModel.findOne({username});
   }
   
+  async findById(_id:string) {
+    return await this.userModel.findOne({_id:_id});
+  }
+
 }
