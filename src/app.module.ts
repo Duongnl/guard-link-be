@@ -7,6 +7,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/passport/jwt-auth.guard';
+import { FoldersModule } from './folders/folders.module';
+import { LinksModule } from './links/links.module';
 
 @Module({
   imports: [
@@ -26,7 +28,15 @@ import { JwtAuthGuard } from './auth/passport/jwt-auth.guard';
     
     
     
-    AuthModule, // user module
+    AuthModule,
+    
+    
+    
+    FoldersModule,
+    
+    
+    
+    LinksModule, 
 
   ],
   controllers: [AppController],
